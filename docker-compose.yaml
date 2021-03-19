@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  php:
+    image: php:8.0-alpine
+    working_dir: /src
+    volumes: 
+      - ./src:/src
+    entrypoint: ['php']
+  composer:
+    image: composer:latest
+    working_dir: /src
+    volumes: 
+      - ./src:/src
+
