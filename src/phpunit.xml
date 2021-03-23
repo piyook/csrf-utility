@@ -3,7 +3,9 @@
 <phpunit bootstrap="./app/bootstrap.php"
         colors="true"
         verbose="true"
-        stopOnFailure="false">
+        stopOnFailure="false"
+       
+        >
     <testsuites>
         <testsuite name="Test Suite">
             <directory>tests</directory>

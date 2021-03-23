@@ -4,20 +4,17 @@ class CSRFTest extends \PHPUnit\Framework\TestCase
 {
 
     protected $csrf;
+    protected $expiryTime;
 
     protected function setUp():void {
-        $this->csrf = new \App\CSRF\CSRF;
+
+        $this->expiryTime=100;
+        $this->csrf = new \App\CSRF\CSRFController($this->expiryTime);
     }
 
-    /** @test */
-    public function check_1_CSRF_expiration_set_and_is_a_integer(){
-
-            $this->assertIsInt(CSRF_EXPIRE);
-
-    }
 
     /** @test */
-    public function check_2_returns_a_string_of_length_64(){
+    public function check_1_returns_a_string_of_length_64(){
 
         $token = $this->csrf->generateToken();
 
@@ -26,7 +23,7 @@ class CSRFTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function check_3_missing_CRSF_token_returns_false(){
+    public function check_2_missing_CRSF_token_returns_false(){
 
         $storedToken="";
         $passedToken="";
@@ -35,7 +32,7 @@ class CSRFTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function check_4_invalid_CRSF_token_returns_false(){
+    public function check_3_invalid_CRSF_token_returns_false(){
 
         $storedToken=$this->csrf->generateToken();
         $passedToken="1234";
@@ -44,7 +41,7 @@ class CSRFTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function check_5_valid_CRSF_token_returns_true(){
+    public function check_4_valid_CRSF_token_returns_true(){
 
         $token=$this->csrf->generateToken();
         
@@ -52,21 +49,6 @@ class CSRFTest extends \PHPUnit\Framework\TestCase
     }
 
     
-    /** @test */
-    public function check_6_valid_time_for_CSRF_token_returns_true(){
-
-        $token_grant_time = time();
-        $this->assertTrue($this->csrf->checkTokenExpiration($token_grant_time, CSRF_EXPIRE));
-    }
-
-    /** @test */
-    public function check_7_invalid_time_for_CSRF_token_returns_false(){
-
-        $failing_token_grant_time = time() - CSRF_EXPIRE - 1;
-        $this->assertFalse(
-            $this->csrf->checkTokenExpiration($failing_token_grant_time, CSRF_EXPIRE)
-        );
-    }
 }
 
 ?>
