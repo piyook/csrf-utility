@@ -20,11 +20,12 @@ header("Access-Control-Allow-Headers: Content-Type, Origin, Accept, Pragma, Acce
 <body>
 
     <div align="center">
+        <img src="piyook.png">
         <h1> CSRF Cookie Test </h1>
    
 
     <button onclick="setCSRF()">SET csrf cookie</button>
-    <button onclick="checkCSRF()">SEND & CHECK csrf cookie</button>
+    <button onclick="checkCSRF()">CHECK csrf cookie</button>
 
     </div>
     
