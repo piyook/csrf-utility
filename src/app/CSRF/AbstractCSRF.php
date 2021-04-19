@@ -2,7 +2,7 @@
 
 namespace App\CSRF;
 
-class AbstractCSRF
+abstract class AbstractCSRF
 {
 
     /**
