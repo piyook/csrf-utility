@@ -13,14 +13,13 @@ class CSRFController extends AbstractCSRF implements InterfaceCSRF
     public function setHttpCSRFCookie(): bool
     {
 
-        $token = $this->generateToken();
-        $_SESSION['CSRF'] = $token;
+        $_SESSION['CSRF'] = $this->generateToken();
 
         if (!isset($_SESSION['CSRF'])){
             throw new CSRFException;
         }
 
-        return setcookie('csrfToken', $token, [
+        return setcookie('csrfToken', $_SESSION['CSRF'], [
             'expires' => time() + 3600,
             'path' => '/',
             'domain' => false,
