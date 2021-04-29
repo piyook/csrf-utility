@@ -192,7 +192,13 @@ A 403 Forbidden Error will be sent for all POST requests that dont have a valid 
 
 ### *Customization*
 
-The Length of Time the CSRF Cookie is valid is set to 60 minutes (3600 seconds) or end of the Session. This can be modified in the setHttpCSRFCookie method. 
+The Length of Time the CSRF Cookie is valid is set to 60 minutes (3600 seconds) or end of the Session. This can be modified in the setHttpCSRFCookie method.
+
+The Session Cookie should be set to Samesite, Secure and HttpOnly - this can be set-up in the php.ini file or the default session_set_cookie_params included in the boostrap file - this helps prevent session cookie hijacking.
+
+The CSRF Cookie is set to samesite by default and the 'domain' value should be set to the required value depeneding on the use .. (in this demo its set to false)
+
+
 
 <br><br>
 

@@ -7,7 +7,7 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Expose-Headers: Set-Cookie");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Headers: Content-Type, Origin, Accept, Pragma, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
